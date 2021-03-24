@@ -2,21 +2,31 @@ import React from 'react'
 import className from 'classnames'
 import propTypes from 'prop-types'
 
-function PizzaItem({imageUrl,name, types, sizes, price }) {
+function PizzaItem({id, imageUrl,name, types, sizes, price, onClickAddPizza, addedCount }) {
+  const avalibleTypes =['тонкое','традиционное']
+  const avalibleSizes =[26,30, 40]
 
-    const [activeType, setActiveType] = React.useState(types[0])
+    const [activeType, setActiveType] = React.useState(0)
 
     const setType = (index)=>{      
         setActiveType(index)
     }
-    const [activeSize, setActiveSize] = React.useState(sizes[0])
+    const [activeSize, setActiveSize] = React.useState(0)
 
     const setSize = (index)=>{
         setActiveSize(index)
     }
+    const handleAddPizza = ()=> {
+      const obj = {
+        id, imageUrl,name, price,
+        size: avalibleSizes[activeSize],
+        type: avalibleTypes[activeType]
 
-    const avalibleTypes =['тонкое','традиционное']
-    const avalibleSizes =[26,30, 40]
+      }
+      onClickAddPizza(obj)
+    }
+
+
     return (
         <div className="pizza-block">
         <img
@@ -56,7 +66,7 @@ function PizzaItem({imageUrl,name, types, sizes, price }) {
       
           </ul>
         </div>
-        <div className="pizza-block__bottom">
+        <div onClick={handleAddPizza} className="pizza-block__bottom">
           <div className="pizza-block__price">от {price} </div>
           <div className="button button--outline button--add">
             <svg
@@ -72,7 +82,10 @@ function PizzaItem({imageUrl,name, types, sizes, price }) {
               />
             </svg>
             <span>Добавить</span>
-            <i>2</i>
+            {
+              addedCount && <i>{ addedCount}</i>
+            }
+            
           </div>
         </div>
       </div> 

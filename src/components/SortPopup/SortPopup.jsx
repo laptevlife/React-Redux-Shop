@@ -4,18 +4,24 @@ import { useDispatch } from 'react-redux'
 import {setSortBy} from '../../redux/actions/filters'
 
 
-const SortPopup = React.memo(function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup({ items, filtersortBy  }) {
 
     const [popUpVisability, setVisability] = React.useState(false);
-    const [activeSortItem, setItem] = React.useState(0)
+    // const [activeSortItem, setItem] = React.useState(0)
+    // const activeSortItem = items.find(i => i.type === filtersortBy)
+    const activeSortItem = items.findIndex(i => i.type === filtersortBy)
+    // console.log(activeSortItem, "activeSortItem");
+    // console.log(items.findIndex(i => i.type === filtersortBy));
+    
+    
     const chousenSortItem = items[activeSortItem].name
     const sortRef = React.useRef()
     const dispatch = useDispatch()
 
-    const handleClick = (e) => {
+    const handleClick = (event) => {
         // console.log('clickkk');
-        
-        if (!e.path.includes(sortRef.current)) {
+        // const path = event.path || (event.composedPath && event.composedPath()) || composedPath(event.target);
+        if (!event.path.includes(sortRef.current)) {
             // console.log('e', e.path);
             // console.log('sortRef.current', sortRef.current);
             
@@ -31,7 +37,7 @@ const SortPopup = React.memo(function SortPopup({ items }) {
         setVisability(!popUpVisability)
     }
     const setActiveItem = (index) => {
-        setItem(index)
+        // setItem(index)
         setVisability(false)
         // console.log('index', index);
         

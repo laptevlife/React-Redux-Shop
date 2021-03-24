@@ -9,8 +9,8 @@ import Cart from './pages/Cart';
 // import axios from 'axios'
 // import store from './redux/store'
 // import { setPizzas } from './redux/actions/pizzas'
-import { useDispatch } from 'react-redux'
-import {fetchPizzas} from './redux/actions/pizzas'
+// import { useDispatch } from 'react-redux'
+// import {fetchPizzas} from './redux/actions/pizzas'
 
 
 
@@ -19,14 +19,14 @@ import {fetchPizzas} from './redux/actions/pizzas'
 
 function App() {
 
-  const dispatch = useDispatch()
-  React.useEffect(() => {
-    // axios.get('http://localhost:3000/pizzas')
-    //   .then(res => {
-    //     dispatch(setPizzas(res.data))
-    //   })
-    dispatch(fetchPizzas())
-  }, [])
+  // const dispatch = useDispatch()
+  // React.useEffect(() => {
+  //   // axios.get('http://localhost:3000/pizzas')
+  //   //   .then(res => {
+  //   //     dispatch(setPizzas(res.data))
+  //   //   })
+  //   dispatch(fetchPizzas())
+  // }, [])
 
 
 // console.log('PROPS', props);

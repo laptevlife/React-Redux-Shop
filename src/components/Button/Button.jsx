@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Button() {
+function Button({totalPrice, totalCount}) {
   return (
 
 
     <div className="header__cart">
       <div className="button button--cart">
-        <span>520 ₽</span>
+        <span>{totalPrice}</span>
         <div className="button__delimiter"></div>
         <svg
           width="18"
@@ -37,7 +37,7 @@ function Button() {
             strokeLinejoin="round"
           />
         </svg>
-        <span>3</span>
+        <span>{totalCount}</span>
       </div>
     </div>
 
